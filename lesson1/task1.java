@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] v = new int[]{6, 28, 1, 2, 4, 6, 8, 0, 3, 5};
+        int[] v = new int[]{0, 6, 28, 1, 2, 4, 6, 8, 3, 5};
         System.out.println("До правки: " + Arrays.toString(v));
         changeOrder(v);
         System.out.println("После    : " + Arrays.toString(v));
@@ -32,22 +32,14 @@ public class Main {
 
 
         int minElemIndex = getMinElemIndex(array);
+        int firstElem = array[0];
+        array[0] = array[minElemIndex];
+        array[minElemIndex] = firstElem;
+
         int maxElemIndex = getMaxElemIndex(array);
-
-        //Для случая {3, 2, 1}
-        if (minElemIndex == 0 || minElemIndex == array.length - 1) {
-            int firstElem = array[0];
-            array[0] = array[minElemIndex];
-            array[minElemIndex] = firstElem;
-        } else {
-            int firstElem = array[0];
-            array[0] = array[minElemIndex];
-            array[minElemIndex] = firstElem;
-
-            int lastElem = array[array.length - 1];
-            array[array.length - 1] = array[maxElemIndex];
-            array[maxElemIndex] = lastElem;
-        }
+        int lastElem = array[array.length - 1];
+        array[array.length - 1] = array[maxElemIndex];
+        array[maxElemIndex] = lastElem;
     }
 
     /**
